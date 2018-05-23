@@ -1,5 +1,7 @@
-package cryptography;
 
+package cyrptogramChallenge;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,19 +15,18 @@ public class Dictionary {
 	/*	reads a file into an arraylist 
 	 * populates dictionary array
 	 */
-	public static String[] getNew() throws FileNotFoundException {
-		Scanner scan = new Scanner(dictionaryLocation);
-		ArrayList<String> tempDictionary = new ArrayList<String>();
+	public static String[] readFile() throws FileNotFoundException {
+		Scanner scan = new Scanner(new File("H:/My Documents/Eclipse/wordlist.txt"));
+		ArrayList<String> a = new ArrayList<String>();
 		while (scan.hasNextLine()) {
-			tempDictionary.add(scan.nextLine());
+			a.add(scan.nextLine());
 		}
-		dictionary = new String[tempDictionary.size()];
-
-		// ArrayList to Array Conversion
-		for (int i =0; i < tempDictionary.size(); i++)
-			dictionary[i] = tempDictionary.get(i);
+		String[] w = new String[a.size()];
+		for (int i = 0; i < a.size(); i++) {
+			w[i] = a.get(i);
+		}
 		scan.close();
-		return dictionary;
+		return w;
 	}
 	
 
