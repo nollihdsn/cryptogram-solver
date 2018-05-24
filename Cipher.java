@@ -1,4 +1,4 @@
-package cryptography;
+package cyrptogramChallenge;
 
 public class Cipher {
 	/* cipher object
@@ -7,7 +7,7 @@ public class Cipher {
 	private static char[] cipher = new char[26];
 
 	public Cipher(){
-		for (int i = 1; i<=26; i++){
+		for (int i = 0; i<26; i++){
 			cipher[i]='#';
 		}
 	}
@@ -51,7 +51,7 @@ public class Cipher {
 		return solved;
 	}
 
-	public static String combine(Cipher cipher1, Cipher cipher2) throws IllegalArgumentException{
+	public static Cipher combine(Cipher cipher1, Cipher cipher2) throws IllegalArgumentException{
 		String finalCipher="";
 		if (worksWith(cipher1, cipher2)==false){
 			throw new IllegalArgumentException();
@@ -65,9 +65,8 @@ public class Cipher {
 				finalCipher+=cipher2.get(i);
 			}
 		}
-
-
-		return finalCipher;
+		Cipher result = new Cipher(finalCipher);
+		return result;
 	}
 }
 
