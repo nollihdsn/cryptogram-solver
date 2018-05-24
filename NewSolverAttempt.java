@@ -60,13 +60,14 @@ public class NewSolverAttempt {
 		    	    ArrayList<Integer> characteristics = similarities.get(i); //a copy of the element, to avoid long impossible to read if statements
 		    	    for (int j = 0; j < characteristics.size(); j++) { //iterate through each element of similarities, representing each subsequent letter's relation to the first
 		    	    	if (characteristics.get(j) == 100) {
-		    	    		if (possible.charAt(j+i) == c) {
+		    	    		System.out.println("different");
+		    	    		if (possible.charAt(j+i+1) == c) {
 		    	    			pass = false;
-		    	    			System.out.println("false at line 65");
+		    	    			System.out.println("false at line 65: " + (j+i));
 		    	    			
 		    	    		}
 		    	    	}
-		    	    	else if (possible.charAt(j+i) != c) {
+		    	    	else if (possible.charAt(j+i+1) != c) {
 		    	    		pass = false;
 		    	    		System.out.println("false at line 70");
 		    	    		
