@@ -6,9 +6,11 @@ import java.util.ArrayList;
 public class ceaserCipherSolver {
 	ArrayList<Cipher> cipherList = new ArrayList<Cipher>();
 	public static void main(String[] args) throws FileNotFoundException{
-		Message messageList = new Message(2);//makes new message with default test
-		String message = messageList.toString();//make tostring
-		System.out.println(message);
+		System.out.println("main");
+
+		//Message messageList = new Message(2);//makes new message with default test
+		//String message = messageList.toString();//make tostring
+		String message = "EPMZM TWDM ZCTMA, BPMZM QA VW EQTT BW XWEMZ; IVL EPMZM XWEMZ XZMLWUQVIBMA, BPMZM TWDM QA TIKSQVO. BPM WVM QA BPM APILWE WN BPM WBPMZ.";
 		ArrayList<Message> options = new ArrayList<Message>();
 		for (int i =1; i<=26; i++){
 			options.add(new Message(encode(message, i)));
@@ -19,36 +21,36 @@ public class ceaserCipherSolver {
 		}
 	}
 	public static String encode(String message, int rotation) {
+		System.out.println(message);
 		String alphabet="abcdefghijklmnopqrstuvwxyz";
-		String codemessage="";
+		String codeMessage="";
 		//fixing case for greater than alphabet length
 		while (rotation>25){
 			rotation=rotation-26;
 		}
 		for(int i=0; i<message.length(); i++) {
-			String messageLower=message.toLowerCase();
-			char letter=messageLower.charAt(i); //picks next letter
-			if (letter==" ".charAt(0)) {
-				codemessage=codemessage+" ";
-				continue;
-			}
-			int letterIndex = alphabet.indexOf(letter);
-			if (letterIndex==-1) {
-				throw new IllegalArgumentException("Only letters a-z and whitespace accepted.");
-			}
-			int y=alphabet.indexOf(letter)+rotation; //position of coded letter
-			while (y>26) {
-				y=y-26;
+			message=message.toLowerCase();
+			char letter=message.charAt(i); //picks next letter
+
+			if (letter==' ') {
+				codeMessage+=' ';
 			}
 
-			char codeletter=alphabet.charAt(y); //converts letter to code letter based on rotation
-			codemessage=codemessage+codeletter;
+			int codeIndex=alphabet.indexOf(letter)+rotation;
+			while (codeIndex>25){
+				codeIndex=codeIndex-26;
+			}
+			codeMessage+=alphabet.charAt(codeIndex); //adds letter at the encoded letter
+
+
 		}
-		System.out.println(codemessage.toUpperCase());
-		return codemessage.toUpperCase();
+		System.out.println(codeMessage.toUpperCase());
+
+		return codeMessage;
 	}
-
-
-
 }
+
+
+
+
 
